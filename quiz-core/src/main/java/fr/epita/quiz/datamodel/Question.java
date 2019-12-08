@@ -2,15 +2,12 @@ package fr.epita.quiz.datamodel;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,8 +17,8 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "question_id")
-	private Integer question_id;
+	@Column(name = "questionId")
+	private Integer questionId;
 	
 	@Column(name = "content")
 	private String content;
@@ -29,68 +26,50 @@ public class Question {
 	@Column(name = "difficulty")
 	private int difficulty;
 	
-//	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-//	private List<Choice> choices;
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	private List<Choice> choices;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "topic_id")
-//	private Topic topic;
+	public Question()
+	{
+	}
 	
 	public Question(String content, int difficulty, List<Choice> choices)
 	{
 		this.content = content;
 		this.difficulty = difficulty;
-	//	this.topic = topic;
-	//	this.choices = choices;
+		this.choices = choices;
 	}
-	
-	public Integer getQuestionId()
-	{
-		return question_id;
+
+	public Integer getQuestionId() {
+		return questionId;
 	}
-	
-	public void setId(Integer question_id)
-	{
-		this.question_id = question_id;
+
+	public void setId(Integer id) {
+		this.questionId = id;
 	}
-	
-	public String getContent()
-	{
-		return this.content;
+
+	public String getContent() {
+		return content;
 	}
-	
-	public void setContent(String content)
-	{
+
+	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	public int getDifficulty()
-	{
-		return this.difficulty;
+
+	public int getDifficulty() {
+		return difficulty;
 	}
-	
-	public void setDifficulty(int difficulty)
-	{
+
+	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
-	
-//	public Topic getTopic()
-//	{
-//		return this.topic;
-//	}
-//	
-//	public void setTopic(Topic topic)
-//	{
-//		this.topic = topic;
-//	}
-	
-//	public List<Choice> getChoices()
-//	{
-//		return this.choices;
-//	}
-//	
-//	public void setChoices(List<Choice> choices)
-//	{
-//		this.choices = choices;
-//	}
+
+	public List<Choice> getChoices() {
+		return choices;
+	}
+
+	public void setChoices(List<Choice> choices) {
+		this.choices = choices;
+	}
+
 }

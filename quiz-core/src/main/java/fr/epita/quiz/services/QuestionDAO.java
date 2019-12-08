@@ -11,11 +11,11 @@ public class QuestionDAO extends DAO<Question>
 {
 	@Override
 	protected String getQueryString() {
-		return "from Questions q where q.content like :pContent";
+		return "from Question q where q.content like :qContent";
 	}
 
 	@Override
 	protected void fillParametersMap(Map<String,Object> map, Question question) {
-		map.put("pContent", "%" + question.getContent() + "%");
+		map.put("qContent", "%" + question.getContent() + "%");
 	}
 }

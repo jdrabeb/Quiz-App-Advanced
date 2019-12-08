@@ -2,7 +2,6 @@ package fr.epita.quiz.datamodel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,72 +9,68 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Choices")
 public class Choice {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "choice_id")
-	private Integer choice_id;
+	@Column(name = "choiceId")
+	private Integer choiceId;
 	
-	@Column(name = "ChoiceContent")
-	private String choiceContent;
+	@Column(name = "content")
+	private String content;
 	
 	@Column(name = "isCorrect")
 	private boolean isCorrect;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "question_id")
-//	private Question question;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "questionId")
+	private Question question;
 
 	public Choice()
 	{
 	}
 
-	public Choice(String choiceContent, boolean isCorrect)
+	public Choice(String content, boolean isCorrect)
 	{
-		this.choiceContent = choiceContent;
+		this.content = content;
 		this.isCorrect = isCorrect;
-	}
-	
-	public Integer getChoiceId()
-	{
-		return choice_id;
-	}
-	
-	public void setChoiceId(Integer choice_id)
-	{
-		this.choice_id = choice_id;
 	}
 
-	public String getChoiceContent()
-	{
-		return this.choiceContent;
+	public Integer getChoiceId() {
+		return choiceId;
 	}
-	
-	public void setChoiceContent(String choiceContent)
-	{
-		this.choiceContent = choiceContent;
+
+	public void setId(Integer id) {
+		this.choiceId = id;
 	}
-	
-	public boolean isCorrect()
-	{
-		return this.isCorrect;
+
+	public String getContent() {
+		return content;
 	}
-	
-	public void setIsCorrect(boolean isCorrect)
-	{
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public boolean getIsCorrect() {
+		return isCorrect;
+	}
+
+	public void setIsCorrect(boolean isCorrect) {
 		this.isCorrect = isCorrect;
 	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 	
-//	public Question getQuestion()
-//	{
-//		return this.question;
-//	}
-//	
-//	public void setQuestion(Question question)
-//	{
-//		this.question = question;
-//	}
 }
