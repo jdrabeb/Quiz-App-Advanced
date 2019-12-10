@@ -4,7 +4,12 @@ import java.util.List;
 
 public class Evaluation {
 
-	private User user;
+	private User student;
 	private Quiz quiz;
-	private List<Answer> answers;
+	
+	
+	private List<Choice> answers;
+	
+	private int grade;
+	
 }

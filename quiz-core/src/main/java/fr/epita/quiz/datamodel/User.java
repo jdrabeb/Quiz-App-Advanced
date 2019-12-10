@@ -2,10 +2,14 @@ package fr.epita.quiz.datamodel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="Users")
@@ -21,18 +25,24 @@ public class User{
 	
 	private String password;
 	
-	@Column(name = "isAdmin")
-	private boolean isAdmin;
+//	@Column(name = "isAdmin")
+//	private boolean isAdmin;
 	
+    @NotNull
+    @Column(name = "role")
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
 	public User()
 	{
 	}
 
-	public User(String username, String password, boolean isAdmin)
+	public User(String username, String password, Role role)
 	{
 		this.username = username;
 		this.password = password;
-		this.isAdmin = isAdmin;
+		this.role = role;
+		//this.isAdmin = isAdmin;
 	}
 		
 	public Integer getUserId()
@@ -65,13 +75,21 @@ public class User{
 		this.password = password;
 	}
 	
-	public boolean getIsAdmin()
-	{
-		return this.isAdmin;
+//	public boolean getIsAdmin()
+//	{
+//		return this.isAdmin;
+//	}
+//	
+//	public void setIsAdmin(boolean isAdmin)
+//	{
+//		this.isAdmin = isAdmin;
+//	}
+	public Role getRole() {
+		return role;
 	}
-	
-	public void setIsAdmin(boolean isAdmin)
-	{
-		this.isAdmin = isAdmin;
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
+
 }

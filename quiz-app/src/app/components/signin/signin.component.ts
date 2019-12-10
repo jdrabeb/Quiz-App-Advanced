@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class SigninComponent implements OnInit {
 
-  user : User = new User("", "", false);
+  user : User = new User("", "", "USER");
 
   constructor(private userService : UsersService) { }
 

@@ -1,8 +1,22 @@
-<p>Sign in</p>
-
-<input [(ngModel)] = "user.username" >
-<br>
-<input [(ngModel)] = "user.password" >
-<br>
-<button (click)="save()"><label>Save</label></button>
+<div class="container">
+  <div class="info">
+    <h1>Sign In</h1><span> Quiz Maker <i class="fa fa-heart"></i> Generator</span>
+  </div>
+</div>
+<div class="form">
+  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
+  <form class="register-form">
+    <input [(ngModel)] = "user.username" type="text" placeholder="name"/>
+    <input [(ngModel)] = "user.password" type="password" placeholder="password"/>
+    <input type="text" placeholder="email address"/>
+    <button (click)="save()">create</button>
+    <p class="message">Already registered? <a href="#">Sign In</a></p>
+  </form>
+  <form class="login-form">
+      <input [(ngModel)] = "user.username" type="text" placeholder="name"/>
+    <input [(ngModel)] = "user.password" type="password" placeholder="password"/>
+    <button>login</button>
+    <p class="message">Not registered? <a href="#">Create an account</a></p>
+  </form>
+</div>
 
