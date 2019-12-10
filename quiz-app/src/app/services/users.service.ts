@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-url :string = "http://localhost:8080/quiz-rest-api/rest/register";
+url :string = "http://localhost:8080/quiz-rest-api/rest/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,11 +17,16 @@ url :string = "http://localhost:8080/quiz-rest-api/rest/register";
         return this.httpClient.get(this.url+ "?username=" + criterion) as Observable<User[]>;
   }
 
-    save(user : User){
-        this.httpClient.post(this.url, user).subscribe((data) =>
+  save(user : User){
+        this.httpClient.post(this.url + "register", user).subscribe((data) =>
         console.log(data)
     );
   }
 
+  login(user: User){
+        this.httpClient.post(this.url + "login", user).subscribe((data) =>
+        console.log(data)
+    );
+  }
 
 }
