@@ -1,3 +1,4 @@
+<div class="error">{{ error }}</div>
 <div class="container">
   <div class="info">
     <h1>Quiz App</h1>
@@ -9,6 +10,14 @@
     <input [(ngModel)] = "user.username" type="text" name="username" placeholder="name"/>
     <input [(ngModel)] = "user.password" name="password" type="password" placeholder="password"/>
     <input type="text" placeholder="email address"/>
+<p class="message"> Student</p>
+<input class="form-check-input" type="radio" value="student"
+[(ngModel)]="user.role" name="student" value="USER" [checked]="false"/>
+
+<p class="message"> Teacher</p>
+<input class="form-check-input" type="radio" value="teacher"
+[(ngModel)]="user.role" name="teacher" value="ADMIN" [checked]="false"/>
+
     <button (click)="save()">create</button>
     <p class="message">Already registered? <a routerLink="/login">Sign In</a></p>
   </form>

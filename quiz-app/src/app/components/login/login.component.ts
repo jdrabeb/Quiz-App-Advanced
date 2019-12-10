@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/services/users.service';import {Router} fr
 })
 export class LoginComponent implements OnInit {
 
-    user : User = new User("", "", "USER");
+    user : User = new User("", "", "GUEST");
 
   constructor(private userService : UsersService, private router: Router) { }
 
@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.userService.login(this.user);
-    this.router.navigate(['xx']), {replaceUrl:true};
+    console.log(this.userService.login(this.user));
+    // this.router.navigate(['xx']), {replaceUrl:true};
   }
 
 }

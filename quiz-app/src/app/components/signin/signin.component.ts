@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';import {Router} fr
 })
 export class SigninComponent implements OnInit {
 
-  user : User = new User("", "", "USER");
+  user : User = new User("", "", "");
 
   constructor(private userService : UsersService, private router: Router) { }
 
@@ -18,8 +18,8 @@ export class SigninComponent implements OnInit {
   }
 
   save(){
-        console.log(this.user.username)
-        this.userService.save(this.user);
+        console.log(this.user.role)
+        console.log("Error" + this.userService.save(this.user));
         this.router.navigate(['login']), {replaceUrl:true};
         }
 }
