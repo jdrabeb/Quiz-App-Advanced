@@ -17,6 +17,7 @@ export class SigninComponent implements OnInit {
   }
 
   save(){
+   console.log(this.user.username)
     this.userService.save(this.user);
     }
 

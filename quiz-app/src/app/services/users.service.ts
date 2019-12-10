@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  url :string = "http://localhost:8080/quiz-rest-api/rest/users";
+url :string = "http://localhost:8080/quiz-rest-api/rest/register";
 
   constructor(private httpClient: HttpClient) { }
 
