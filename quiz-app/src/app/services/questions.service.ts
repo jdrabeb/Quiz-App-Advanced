@@ -22,4 +22,17 @@ export class QuestionsService {
             .subscribe((data) =>
                 console.log(data));
     }
+
+    deleteQuestion(id : number){
+        return this.httpClient.delete(this.url + '/delete/' + id)
+            .subscribe((data) =>
+                console.log(data));
+    }
+
+    updateQuestion(questionContent : string, id : number){
+        return this.httpClient.put(this.url + '/update/' + id + '?questionContent=' + questionContent)
+            .subscribe((data) =>
+                console.log(data));
+    }
+
 }

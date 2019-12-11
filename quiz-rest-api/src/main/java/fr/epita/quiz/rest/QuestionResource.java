@@ -45,7 +45,7 @@ public class QuestionResource {
 	
 	@POST
 	@Path("/")
-//	@JWTTokenNeeded(Permissions = Role.ADMIN)
+	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createQuestion(@RequestBody Question question) throws URISyntaxException {
 		questionDao.create(question);
@@ -77,6 +77,7 @@ public class QuestionResource {
 	
 	@DELETE
 	@Path("/delete/{id}")
+	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteQuestion(@PathParam("id") int id) {
 		Question question = questionDao.getById(id, Question.class);
@@ -90,6 +91,7 @@ public class QuestionResource {
 	
 	@PUT
 	@Path("/update/{id}")
+	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateQuestion(@PathParam("id") int id, @QueryParam("questionContent") String questionContent) {
 		Question question = questionDao.getById(id, Question.class);

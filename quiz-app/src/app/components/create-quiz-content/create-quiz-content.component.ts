@@ -15,6 +15,9 @@ export class CreateQuizContentComponent implements OnInit {
     questions : Question[];
     quizQuestions : Question[];
     quiz : Quiz = new Quiz("", this.questions);
+    isEditEnable : number = -1;
+    isChanged : boolean;
+    newQuestionContent : string;
 
     constructor(private questionsService : QuestionsService,
         private quizService : QuizService, private router: Router)
@@ -24,10 +27,10 @@ export class CreateQuizContentComponent implements OnInit {
         this.quizQuestions = [];
         this.questionsService.getQuestionList("").subscribe (
             (data) => this.questions = data);
+        isChanged = false;
     }
 
     getQuizQuestions(i) {
-
         this.quizQuestions.push(this.questions[i]);
     }
 
@@ -41,6 +44,20 @@ export class CreateQuizContentComponent implements OnInit {
         this.router.navigate(['create']), {replaceUrl:true};
     }
 
+    delete(i : number, id : number) {
+        this.questionsService.deleteQuestion(id);
+        this.isChanged = true;
+    }
+
+    update(i : number, id : number) {
+        if (this.isEditEnable !== i)
+            this.isEditEnable = i;
+        else
+        {
+            this.questionsService.updateQuestion(this.newQuestionContent, id)
+            this.isEditEnable = -1;
+        }
+    }
 
     logout() {
         this.router.navigate(['login']), {replaceUrl:true};

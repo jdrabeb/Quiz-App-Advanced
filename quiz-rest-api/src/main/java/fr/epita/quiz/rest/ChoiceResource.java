@@ -41,7 +41,7 @@ public class ChoiceResource {
 	
 	@POST
 	@Path("/")
-//	@JWTTokenNeeded(Permissions = Role.ADMIN)
+	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createChoice(@RequestBody Choice choice) throws URISyntaxException {
 		choiceDao.create(choice);
@@ -69,6 +69,7 @@ public class ChoiceResource {
 	
 	@DELETE
 	@Path("/delete/{id}")
+	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteChoice(@PathParam("id") int id) {
 		Choice choice = new Choice();
@@ -83,6 +84,7 @@ public class ChoiceResource {
 	
 	@PUT
 	@Path("/update/{id}")
+	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateChoice(@PathParam("id") int id, @QueryParam("choiceContent") String choiceContent) {
 		Choice choice = choiceDao.getById(id, Choice.class);

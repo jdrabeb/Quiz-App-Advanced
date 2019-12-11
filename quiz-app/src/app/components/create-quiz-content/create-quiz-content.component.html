@@ -1,3 +1,5 @@
+<p class="message" align="left" *ngIf="isChanged" > Please refresh to reload list.<p>
+
 <p class="message" align="right"><a role="button" (click)="logout()"> Logout</a><p>
 <div class="container">
   <div class="info">
@@ -17,11 +19,18 @@
         [ngModel]="questions[i]?.question"
         (ngModelChange)="getQuizQuestions(i)" value=true [checked]="false"/>
                <label> &nbsp; &nbsp;  Question {{i+1}} :</label>
-        <p> <b>{{i+1}}. </b>{{question.questionContent}} </p>
+
+               <br><br> <input [(ngModel)]="newQuestionContent"
+               name="edit-question{{i}}"
+               *ngIf="isEditEnable == i"/>
+        <p *ngIf="isEditEnable != i" > <b>{{i+1}}. </b>{{question.questionContent}} </p>
         <br><p> Choices : </p>
             <div *ngFor="let choice of question.choices; index as j">
                 <p> {{j+1}} - {{choice.choiceContent}} </p>
             </div>
+            <p style="font-size:16px" class="message">
+                <a role="button" (click)="delete(i, question.questionId)"> Delete </a>|
+                <a role="button" (click)="update(i, question.questionId)"> Update </a><p>
         <br><br>
     </div>
 

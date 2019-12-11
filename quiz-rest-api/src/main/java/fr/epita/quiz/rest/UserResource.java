@@ -47,9 +47,6 @@ public class UserResource {
     @Context
     private UriInfo uriInfo;
 	
-//	@Inject
-//	private KeyGenerator keyGenerator;
-	
 	@Inject
 	UserDAO userDao;
 	
