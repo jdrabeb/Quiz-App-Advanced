@@ -79,8 +79,7 @@ public class QuestionResource {
 	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteQuestion(@PathParam("id") int id) {
-		Question question= new Question();
-		question = questionDao.getById(id, Question.class);
+		Question question = questionDao.getById(id, Question.class);
 		if (question == null)
 		{
             return Response.status(Status.NO_CONTENT).build();

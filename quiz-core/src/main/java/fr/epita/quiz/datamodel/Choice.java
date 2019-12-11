@@ -1,5 +1,6 @@
 package fr.epita.quiz.datamodel;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Choice {
 	private boolean isCorrect;
 	
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "questionId")
 	private Question question;
 

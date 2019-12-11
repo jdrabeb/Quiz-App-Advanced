@@ -2,6 +2,7 @@ package fr.epita.quiz.datamodel;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +31,7 @@ public class Question {
 	@Column(name = "difficulty")
 	private int difficulty;
 	
-	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<Choice> choices;
 	
 	@JsonIgnore
