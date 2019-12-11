@@ -14,6 +14,7 @@ export class CreateQuizContentComponent implements OnInit {
 
     questions : Question[];
     questionIds = [];
+    quiz : Quiz ("", this.questions);
 
     constructor(private choicesService :ChoicesService,
         private questionsService : QuestionsService, private router: Router)
