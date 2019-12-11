@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,9 @@ public class Quiz {
 	
 	@Column(name = "title")
 	private String title;
+	
+//	@OneToOne(mappedBy = "quiz")
+//	private Evaluation evaluation;
 
 	@OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)
 	private List<Question> questions;

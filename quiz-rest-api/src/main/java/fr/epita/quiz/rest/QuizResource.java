@@ -6,19 +6,23 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import fr.epita.quiz.datamodel.Choice;
 import fr.epita.quiz.datamodel.Question;
 import fr.epita.quiz.datamodel.Quiz;
 import fr.epita.quiz.datamodel.Role;
@@ -68,5 +72,30 @@ public class QuizResource {
 		List<Quiz> results = quizDao.search(quiz);
 		return Response.ok(results).build();
 	}
+	
+	@DELETE
+	@Path("/delete/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteQuiz(@PathParam("id") int id) {
+		Quiz quiz = new Quiz();
+		quiz = quizDao.getById(id, Quiz.class);
+		if (quiz == null)
+		{
+            return Response.status(Status.NO_CONTENT).build();
+		}
+		quizDao.delete(quiz);
+        return Response.status(Status.OK).build();
+	}
+	
+	@PUT
+	@Path("/update/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateQuiz(@PathParam("id") int id, @QueryParam("title") String title) {
+		Quiz quiz = quizDao.getById(id, Quiz.class);
+		quiz.setTitle(title);
+		quizDao.update(quiz);
+        return Response.status(Status.OK).build();
+	}
+
 }
 

@@ -5,6 +5,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
 import { CreateQuestionsComponent } from './components/create-questions/create-questions.component';
 import { CreateQuizContentComponent } from './components/create-quiz-content/create-quiz-content.component';
+import { EvaluationComponent } from './components/evaluation/evaluation.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'create', component: CreateQuizComponent },
     { path: 'questions', component: CreateQuestionsComponent },
     { path: 'quiz', component: CreateQuizContentComponent },
+    { path: 'evaluation', component: EvaluationComponent },
 ];
 
 @NgModule({

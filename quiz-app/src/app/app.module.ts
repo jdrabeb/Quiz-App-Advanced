@@ -11,6 +11,7 @@ import { CreateQuizComponent } from './components/create-quiz/create-quiz.compon
 import { CreateQuestionsComponent } from './components/create-questions/create-questions.component';
 import { AuthInterceptor } from './auth-interceptor.module';
 import { CreateQuizContentComponent } from './components/create-quiz-content/create-quiz-content.component';
+import { EvaluationComponent } from './components/evaluation/evaluation.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreateQuizContentComponent } from './components/create-quiz-content/cre
     LoginComponent,
     CreateQuizComponent,
     CreateQuestionsComponent,
-    CreateQuizContentComponent
+    CreateQuizContentComponent,
+    EvaluationComponent
   ],
   imports: [
     BrowserModule,

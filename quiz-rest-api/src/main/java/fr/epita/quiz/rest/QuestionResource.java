@@ -7,14 +7,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,7 +45,7 @@ public class QuestionResource {
 	
 	@POST
 	@Path("/")
-	@JWTTokenNeeded(Permissions = Role.ADMIN)
+//	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createQuestion(@RequestBody Question question) throws URISyntaxException {
 		questionDao.create(question);
@@ -70,5 +73,29 @@ public class QuestionResource {
 		question.setQuestionContent(questionContent);
 		List<Question> results = questionDao.search(question);
 		return Response.ok(results).build();
+	}
+	
+	@DELETE
+	@Path("/delete/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteQuestion(@PathParam("id") int id) {
+		Question question= new Question();
+		question = questionDao.getById(id, Question.class);
+		if (question == null)
+		{
+            return Response.status(Status.NO_CONTENT).build();
+		}
+		questionDao.delete(question);
+        return Response.status(Status.OK).build();
+	}
+	
+	@PUT
+	@Path("/update/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateQuestion(@PathParam("id") int id, @QueryParam("questionContent") String questionContent) {
+		Question question = questionDao.getById(id, Question.class);
+		question.setQuestionContent(questionContent);
+		questionDao.update(question);
+        return Response.status(Status.OK).build();
 	}
 }

@@ -1,12 +1,17 @@
 package fr.epita.quiz.datamodel;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -22,12 +27,14 @@ public class User{
 	
 	@Column(name = "username")
 	private String username;
-	
+
+	@Column(name = "password")
 	private String password;
 	
-//	@Column(name = "isAdmin")
-//	private boolean isAdmin;
-	
+//	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//	@Column(name = "username")
+//	private Evaluation evaluation;
+
     @NotNull
     @Column(name = "role")
 	@Enumerated(EnumType.STRING)

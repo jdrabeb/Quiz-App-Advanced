@@ -34,7 +34,6 @@ export class CreateQuestionsComponent implements OnInit {
 
     save() {
         this.question.choices = this.choices;
-        console.log(this.question);
         if (this.question.questionContent !== "")
             this.questionsService.saveQuestion(this.question);
         else

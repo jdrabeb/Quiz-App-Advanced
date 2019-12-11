@@ -38,7 +38,7 @@ public abstract class DAO<T>
 	@Transactional
 	public void delete(T t)
 	{
-		em.remove(t);
+		em.remove(em.contains(t) ? t : em.merge(t));
 	}
 	
 	public List<T> search(T criteria){

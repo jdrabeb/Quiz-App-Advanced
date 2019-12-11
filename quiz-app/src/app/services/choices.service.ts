@@ -22,4 +22,16 @@ export class ChoicesService {
             .subscribe((data) =>
                 console.log(data));
     }
+
+    deleteChoice(choice : Choice, id : number){
+        return this.httpClient.delete(this.url + 'delete/' + id)
+            .subscribe((data) =>
+                console.log(data));
+    }
+
+    updateChoice(choiceContent : string, id : number){
+        return this.httpClient.put(this.url + 'update/' + choiceContent)
+            .subscribe((data) =>
+                console.log(data));
+    }
 }
