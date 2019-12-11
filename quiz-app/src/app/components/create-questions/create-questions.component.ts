@@ -39,7 +39,12 @@ export class CreateQuestionsComponent implements OnInit {
                 console.log(choice); })
         this.question.choices = this.choices;
         this.questionsService.saveQuestion(this.question);
-        console.log(this.question);
-   }
+        this.choices = []
+        this.question = new Question("", 0, this.choices);
+    }
+
+    back() {
+        this.router.navigate(['create']), {replaceUrl:true};
+    }
 
 }
