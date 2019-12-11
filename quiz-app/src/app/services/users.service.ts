@@ -13,7 +13,7 @@ export class UsersService {
 
     getUserList(criterion : string): Observable<User[]>{
         var userList : User[];
-        return this.httpClient.get(this.url+ "?username=" + criterion) as Observable<User[]>;
+        return this.httpClient.get(this.url+ "search?username=" + criterion) as Observable<User[]>;
     }
 
     save(user : User){

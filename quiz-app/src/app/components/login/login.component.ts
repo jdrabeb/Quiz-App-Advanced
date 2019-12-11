@@ -10,15 +10,29 @@ import { UsersService } from 'src/app/services/users.service';import {Router} fr
 export class LoginComponent implements OnInit {
 
     user : User = new User("", "", "GUEST");
+    role : string;
 
-  constructor(private userService : UsersService, private router: Router) { }
+    constructor(private userService : UsersService, private router: Router) { }
 
-  ngOnInit() {
+    ngOnInit() {
+    }
+
+    login() {
+        this.userService.login(this.user);
+        this.getRole();
+        if (this.role == 'USER')
+            this.router.navigate(['create']), {replaceUrl:true};
+        if (this.role == 'ADMIN')
+            this.router.navigate(['evaluation']), {replaceUrl:true};
   }
 
-  login() {
-    console.log(this.userService.login(this.user));
-    // this.router.navigate(['xx']), {replaceUrl:true};
-  }
+    getRole() {
+        this.userService.getUserList(this.user.username)
+        .subscribe((data) =>
+        {
+            let role = data[0].role;
+            this.role = role;
+        });
+    }
 
 }
