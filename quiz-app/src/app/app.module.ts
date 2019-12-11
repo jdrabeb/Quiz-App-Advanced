@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
 import { CreateQuestionsComponent } from './components/create-questions/create-questions.component';
 import { AuthInterceptor } from './auth-interceptor.module';
+import { CreateQuizContentComponent } from './components/create-quiz-content/create-quiz-content.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthInterceptor } from './auth-interceptor.module';
     SigninComponent,
     LoginComponent,
     CreateQuizComponent,
-    CreateQuestionsComponent
+    CreateQuestionsComponent,
+    CreateQuizContentComponent
   ],
   imports: [
     BrowserModule,

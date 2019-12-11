@@ -67,6 +67,10 @@
   text-decoration: none;
 }
 
+a:hover {
+ cursor:pointer;
+}
+
 .container {
   position: relative;
   z-index: 1;

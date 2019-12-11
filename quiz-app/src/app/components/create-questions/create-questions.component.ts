@@ -52,4 +52,10 @@ export class CreateQuestionsComponent implements OnInit {
         this.router.navigate(['create']), {replaceUrl:true};
     }
 
+    logout() {
+        this.router.navigate(['login']), {replaceUrl:true};
+        localStorage.setItem('token', '');
+    }
+
+
 }

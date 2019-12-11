@@ -13,8 +13,13 @@ export class CreateQuizComponent implements OnInit {
   ngOnInit() {
   }
 
-  createQuestions() {
-  this.router.navigate(['questions']), {replaceUrl:true};
-  }
+    createQuestions() {
+        this.router.navigate(['questions']), {replaceUrl:true};
+    }
+
+    logout() {
+        this.router.navigate(['login']), {replaceUrl:true};
+        localStorage.setItem('token', '');
+    }
 
 }
