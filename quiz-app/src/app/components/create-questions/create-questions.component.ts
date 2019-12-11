@@ -33,12 +33,17 @@ export class CreateQuestionsComponent implements OnInit {
    }
 
     save() {
-        this.choices.forEach(
-            choice => {
-                this.choicesService.saveChoice(choice);
-                console.log(choice); })
         this.question.choices = this.choices;
-        this.questionsService.saveQuestion(this.question);
+        console.log(this.question);
+        if (this.question.questionContent !== "")
+            this.questionsService.saveQuestion(this.question);
+        else
+        {
+            this.choices.forEach(
+                choice => {
+                    this.choicesService.saveChoice(choice);
+                    console.log(choice); })
+        }
         this.choices = []
         this.question = new Question("", 0, this.choices);
     }
