@@ -17,6 +17,10 @@ export class CreateQuizComponent implements OnInit {
         this.router.navigate(['questions']), {replaceUrl:true};
     }
 
+    createQuizContent() {
+        this.router.navigate(['quiz']), {replaceUrl:true};
+    }
+
     logout() {
         this.router.navigate(['login']), {replaceUrl:true};
         localStorage.setItem('token', '');

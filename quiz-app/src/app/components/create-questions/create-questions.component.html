@@ -12,7 +12,7 @@
     Number of choices <input [(ngModel)]="count" type ="number" name="count"/>
 
     <div *ngFor="let item  of array(count).fill(0); index as i">
-        Choice
+        Choice {{i+1}}
         <input [ngModel]="choices[i]?.choiceContent"
         (ngModelChange)="dataChanged($event,i,'choiceContent')"
         name="content-{{i}}" >

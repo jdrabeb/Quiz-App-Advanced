@@ -14,7 +14,7 @@ export class QuestionsService {
 
     getQuestionList(criterion : string): Observable<Question[]>{
         var questionList : Question[];
-        return this.httpClient.get(this.url+ "search?content=" + criterion) as Observable<Question[]>;
+        return this.httpClient.get(this.url+ "/search?questionContent=" + criterion) as Observable<Question[]>;
     }
 
     saveQuestion(question : Question){

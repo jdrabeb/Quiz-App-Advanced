@@ -1,1 +1,31 @@
-<p>create-quiz-content works!</p>
+<p class="message" align="right"><a role="button" (click)="logout()"> Logout</a><p>
+<div class="container">
+  <div class="info">
+    <h1>Create quiz</h1>
+  </div>
+</div>
+<div class="form">
+  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
+  <form class="login-form">
+      <b> Select questions to add to quiz. </b><br><br><br>
+      <div *ngFor="let question of questions; index as i">
+
+        <input type="radio"
+        value="isCorrect"
+        [ngModel]="questions[i]?.questionId" name="correct-{{i}}"
+        value=true [checked]="false"/>
+        <label> &nbsp; &nbsp;  Question {{i+1}}</label>
+        <p> {{question.questionContent}} </p>
+        <br><p> Choices </p>
+            <div *ngFor="let choice of question.choices; index as i">
+                <p> {{choice.choiceContent}} </p>
+            </div>
+        <br><br>
+    </div>
+
+    <button (click)="save()">Create question</button>
+    <br><br><br>
+    <button (click)="back()">Back</button>
+  </form>
+</div>
+

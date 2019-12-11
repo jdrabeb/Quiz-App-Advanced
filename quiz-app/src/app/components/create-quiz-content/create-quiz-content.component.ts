@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Question } from 'src/app/datamodel/question';
+import { Choice } from 'src/app/datamodel/choice';
+import { QuestionsService } from 'src/app/services/questions.service';
+import { ChoicesService } from 'src/app/services/choices.service';
 
 @Component({
   selector: 'app-create-quiz-content',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateQuizContentComponent implements OnInit {
 
-  constructor() { }
+    questions : Question[];
 
-  ngOnInit() {
-  }
+    constructor(private choicesService :ChoicesService,
+        private questionsService : QuestionsService, private router: Router)
+    { }
+
+    ngOnInit() {
+        this.questionsService.getQuestionList("").subscribe (
+            (data) => this.questions = data);
+    }
+
+    logout() {
+        this.router.navigate(['login']), {replaceUrl:true};
+        localStorage.setItem('token', '');
+    }
 
 }
