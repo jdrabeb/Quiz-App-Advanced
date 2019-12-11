@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="info">
+    <h1>Create questions</h1>
+  </div>
+</div>
+<div class="form">
+  <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
+  <form class="login-form">
+
+    Question <input [(ngModel)]="question.questionContent" name="question" />
+    Number of choices <input [(ngModel)]="count" type ="number" name="count"/>
+
+    <div *ngFor="let item  of array(count).fill(0); index as i">
+        Choice
+        <input [ngModel]="choices[i]?.choiceContent"
+        (ngModelChange)="dataChanged($event,i,'choiceContent')"
+        name="content-{{i}}" >
+
+        Is this choice correct ?
+        <input type="radio"
+        value="isCorrect"
+        [ngModel]="choices[i]?.isCorrect"
+        (ngModelChange)="dataChanged($event,i,'isCorrect')"
+        name="correct-{{i}}"
+        value=true
+        [checked]="false"/>
+    </div>
+
+    <button (click)="save()">Create question</button>
+  </form>
+</div>
+

@@ -19,7 +19,7 @@ export class SigninComponent implements OnInit {
 
   save(){
         console.log(this.user.role)
-        console.log("Error" + this.userService.save(this.user));
+        this.userService.save(this.user);
         this.router.navigate(['login']), {replaceUrl:true};
         }
 }

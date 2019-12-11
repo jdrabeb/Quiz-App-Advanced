@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import {HttpClientModule, HttpHeaders} from '@angular/common/http';
 import { SigninComponent } from './components/signin/signin.component';
 import { LoginComponent } from './components/login/login.component';
+import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
+import { CreateQuestionsComponent } from './components/create-questions/create-questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    LoginComponent
+    LoginComponent,
+    CreateQuizComponent,
+    CreateQuestionsComponent
   ],
   imports: [
     BrowserModule,
