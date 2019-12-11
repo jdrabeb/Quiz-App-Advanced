@@ -13,12 +13,12 @@ public class ChoiceDAO extends DAO<Choice>
 	@Override
 	protected String getQueryString()
 	{
-		return "from Choice c where c.content like :cContent";
+		return "from Choice c where c.choiceContent like :cContent";
 	}
 
 	@Override
 	protected void fillParametersMap(Map<String,Object> map, Choice choice)
 	{
-		map.put("cContent", "%" + choice.getContent() + "%");
+		map.put("cContent", "%" + choice.getChoiceContent() + "%");
 	}
 }

@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule, HttpHeaders} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import { SigninComponent } from './components/signin/signin.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
 import { CreateQuestionsComponent } from './components/create-questions/create-questions.component';
+import { AuthInterceptor } from './auth-interceptor.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import { CreateQuestionsComponent } from './components/create-questions/create-q
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [
+    providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    },
 ],
   bootstrap: [AppComponent]
 })

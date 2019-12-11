@@ -24,8 +24,8 @@ public class Question {
 	@Column(name = "questionId")
 	private Integer questionId;
 	
-	@Column(name = "content")
-	private String content;
+	@Column(name = "questionContent")
+	private String questionContent;
 	
 	@Column(name = "difficulty")
 	private int difficulty;
@@ -43,9 +43,9 @@ public class Question {
 	{
 	}
 	
-	public Question(String content, int difficulty, List<Choice> choices)
+	public Question(String questionContent, int difficulty, List<Choice> choices)
 	{
-		this.content = content;
+		this.questionContent = questionContent;
 		this.difficulty = difficulty;
 		this.choices = choices;
 	}
@@ -58,12 +58,12 @@ public class Question {
 		this.questionId = id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getQuestionContent() {
+		return questionContent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setQuestionContent(String questionContent) {
+		this.questionContent = questionContent;
 	}
 
 	public int getDifficulty() {

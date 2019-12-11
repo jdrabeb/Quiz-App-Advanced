@@ -20,8 +20,8 @@ public class Choice {
 	@Column(name = "choiceId")
 	private Integer choiceId;
 	
-	@Column(name = "content")
-	private String content;
+	@Column(name = "choiceContent")
+	private String choiceContent;
 	
 	@Column(name = "isCorrect")
 	private boolean isCorrect;
@@ -35,9 +35,9 @@ public class Choice {
 	{
 	}
 
-	public Choice(String content, boolean isCorrect)
+	public Choice(String choiceContent, boolean isCorrect)
 	{
-		this.content = content;
+		this.choiceContent = choiceContent;
 		this.isCorrect = isCorrect;
 	}
 
@@ -49,12 +49,12 @@ public class Choice {
 		this.choiceId = id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getChoiceContent() {
+		return choiceContent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setChoiceContent(String choiceContent) {
+		this.choiceContent = choiceContent;
 	}
 
 	public boolean getIsCorrect() {
