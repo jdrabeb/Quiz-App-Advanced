@@ -13,6 +13,7 @@ import { ChoicesService } from 'src/app/services/choices.service';
 export class CreateQuizContentComponent implements OnInit {
 
     questions : Question[];
+    questionIds = [];
 
     constructor(private choicesService :ChoicesService,
         private questionsService : QuestionsService, private router: Router)
@@ -21,6 +22,10 @@ export class CreateQuizContentComponent implements OnInit {
     ngOnInit() {
         this.questionsService.getQuestionList("").subscribe (
             (data) => this.questions = data);
+    }
+
+    getQuestionIds() {
+
     }
 
     logout() {

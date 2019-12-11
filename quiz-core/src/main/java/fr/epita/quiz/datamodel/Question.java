@@ -38,7 +38,6 @@ public class Question {
 	@JoinColumn(name = "quizId")
 	private Quiz quiz;
 
-	
 	public Question()
 	{
 	}
@@ -80,6 +79,14 @@ public class Question {
 
 	public void setChoices(List<Choice> choices) {
 		this.choices = choices;
+	}
+	
+	public Quiz getQuiz() {
+		return this.quiz;
+	}
+
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
 	}
 
 }
