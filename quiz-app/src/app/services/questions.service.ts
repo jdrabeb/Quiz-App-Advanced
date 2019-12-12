@@ -30,7 +30,7 @@ export class QuestionsService {
     }
 
     updateQuestion(questionContent : string, id : number){
-        return this.httpClient.put(this.url + '/update/' + id + '?questionContent=' + questionContent)
+        return this.httpClient.put(this.url + '/update/' + id + '?questionContent=' + questionContent, null)
             .subscribe((data) =>
                 console.log(data));
     }

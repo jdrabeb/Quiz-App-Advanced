@@ -7,28 +7,53 @@
 <div class="form">
   <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
   <form class="login-form">
-      Quiz Title<br><br> <input [(ngModel)]="quiz.title" name="quiz-title" />
         <br><br>
-      <b> Select questions to add to quiz. </b><br><br><br>
-      <div *ngFor="let question of questions; index as i">
-
-        <input type="radio"
-        value="isCorrect"  name="correct-{{i}}"
-        [ngModel]="questions[i]?.question"
-        (ngModelChange)="getQuizQuestions(i)" value=true [checked]="false"/>
-               <label> &nbsp; &nbsp;  Question {{i+1}} :</label>
-        <p> <b>{{i+1}}. </b>{{question.questionContent}} </p>
-        <br><p> Choices : </p>
-            <div *ngFor="let choice of question.choices; index as j">
-                <p> {{j+1}} - {{choice.choiceContent}} </p>
-            </div>
-
-        <br><br>
+    <div *ngIf="!isChoseQuiz">
+      <b> Select quiz: </b><br><br><br>
+      <div *ngFor="let quiz of quizList; index as i">
+          <button (click)="pickQuiz(quiz)">{{quiz.title}}</button><br><br>
+      </div>
     </div>
 
-    <button (click)="save()">Create quiz</button>
+    <div *ngIf="isChoseQuiz">
+        <b> {{selectedQuiz.title}} </b><br><br><br>
+      <div *ngFor="let question of questions; index as i">
+            <p align="left"> <b>{{i+1}}. </b>{{question.questionContent}} </p>
+                <div *ngFor="let choice of question.choices; index as j">
+                    <p align="left"> <input type="radio"
+                    value="isCorrect"  name="correct-{{i}}-{{j}}"
+                    [ngModel]="choice"
+                    (ngModelChange)="getAnswer(choice)" value=true [checked]="false"/>
+                    <label> &nbsp; &nbsp;  {{choice.choiceContent}} </label></p>
+                </div>
+      </div>
+    </div>
+    <br>
+      <!--<div *ngFor="let question of questions; index as i">-->
+
+        <!--<input type="radio"-->
+        <!--value="isCorrect"  name="correct-{{i}}"-->
+        <!--[ngModel]="questions[i]?.question"-->
+        <!--(ngModelChange)="getQuizQuestions(i)" value=true [checked]="false"/>-->
+               <!--<label> &nbsp; &nbsp;  Question {{i+1}} :</label>-->
+        <!--<p> <b>{{i+1}}. </b>{{question.questionContent}} </p>-->
+        <!--<br><p> Choices : </p>-->
+            <!--<div *ngFor="let choice of question.choices; index as j">-->
+                <!--<p> {{j+1}} - {{choice.choiceContent}} </p>-->
+            <!--</div>-->
+
+        <!--<br><br>-->
+    <!--</div>-->
+
+    <button (click)="sendEval()">Submit</button>
     <br><br><br>
-    <button (click)="back()">Back</button>
+
+    <div *ngIf ="isSubmit">
+      <b> Final Grade: </b><br>
+      {{evaluation.grade}}
+      <br><br>
+    </div>
+    <button (click)="logout()">Leave</button>
   </form>
 </div>
 

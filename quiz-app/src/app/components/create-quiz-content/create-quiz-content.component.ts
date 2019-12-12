@@ -28,8 +28,8 @@ export class CreateQuizContentComponent implements OnInit {
         this.quizQuestions = [];
         this.questionsService.getQuestionList("").subscribe (
             (data) => this.questions = data);
-        isChanged = false;
-        quizCreated = false;
+        this.isChanged = false;
+        this.quizCreated = false;
     }
 
     getQuizQuestions(i) {
@@ -39,7 +39,7 @@ export class CreateQuizContentComponent implements OnInit {
     save() {
         this.quiz.questions = this.quizQuestions;
         this.quizService.saveQuiz(this.quiz);
-        quizCreated = true;
+        this.quizCreated = true;
     }
 
     back() {

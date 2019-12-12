@@ -30,7 +30,7 @@ export class ChoicesService {
     }
 
     updateChoice(choiceContent : string, id : number){
-        return this.httpClient.put(this.url + 'update/' + choiceContent)
+        return this.httpClient.put(this.url + 'update/' + id + '?choiceContent=' + choiceContent, null)
             .subscribe((data) =>
                 console.log(data));
     }

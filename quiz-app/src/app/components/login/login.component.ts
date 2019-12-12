@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/datamodel/user';
 import { UsersService } from 'src/app/services/users.service';
-import {Router} from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
         this.userService.login(this.user);
         this.getRole();
         if (this.role == 'USER')
-            this.router.navigate(['evaluation']), {replaceUrl:true};
+        {
+            this.router.navigate(['evaluation']), {state : { user : this.user}};
+            localStorage.setItem('student', this.user.username);
+            console.log(localStorage.getItem('Student'));
+        }
         if (this.role == 'ADMIN')
             this.router.navigate(['create']), {replaceUrl:true};
   }
