@@ -17,6 +17,7 @@ export class CreateQuizContentComponent implements OnInit {
     quiz : Quiz = new Quiz("", this.questions);
     isEditEnable : number = -1;
     isChanged : boolean;
+    quizCreated : boolean;
     newQuestionContent : string;
 
     constructor(private questionsService : QuestionsService,
@@ -28,6 +29,7 @@ export class CreateQuizContentComponent implements OnInit {
         this.questionsService.getQuestionList("").subscribe (
             (data) => this.questions = data);
         isChanged = false;
+        quizCreated = false;
     }
 
     getQuizQuestions(i) {
@@ -37,7 +39,7 @@ export class CreateQuizContentComponent implements OnInit {
     save() {
         this.quiz.questions = this.quizQuestions;
         this.quizService.saveQuiz(this.quiz);
-        console.log(this.quiz);
+        quizCreated = true;
     }
 
     back() {

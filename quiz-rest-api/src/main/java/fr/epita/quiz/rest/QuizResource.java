@@ -43,7 +43,7 @@ public class QuizResource {
 
 	@POST
 	@Path("/")
-	@JWTTokenNeeded(Permissions = Role.ADMIN)
+	//@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createQuiz(@RequestBody Quiz quiz) throws URISyntaxException {
 		quizDao.create(quiz);

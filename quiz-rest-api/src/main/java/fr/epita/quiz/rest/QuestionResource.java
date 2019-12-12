@@ -45,7 +45,7 @@ public class QuestionResource {
 	
 	@POST
 	@Path("/")
-	@JWTTokenNeeded(Permissions = Role.ADMIN)
+	//@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createQuestion(@RequestBody Question question) throws URISyntaxException {
 		questionDao.create(question);

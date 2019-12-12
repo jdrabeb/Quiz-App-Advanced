@@ -31,6 +31,11 @@ public class Choice {
 	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "questionId")
 	private Question question;
+	
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "evaluationId")
+	private Evaluation evaluation;
 
 	public Choice()
 	{
@@ -69,9 +74,17 @@ public class Choice {
 	public Question getQuestion() {
 		return question;
 	}
-
+	
 	public void setQuestion(Question question) {
 		this.question = question;
+	}
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
+	}
+	
+	public Evaluation getEvaluation() {
+		return this.evaluation;
 	}
 	
 }

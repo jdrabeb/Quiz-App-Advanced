@@ -41,7 +41,7 @@ public class ChoiceResource {
 	
 	@POST
 	@Path("/")
-	@JWTTokenNeeded(Permissions = Role.ADMIN)
+//	@JWTTokenNeeded(Permissions = Role.ADMIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createChoice(@RequestBody Choice choice) throws URISyntaxException {
 		choiceDao.create(choice);

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -31,9 +32,10 @@ public class User{
 	@Column(name = "password")
 	private String password;
 	
-//	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-//	@Column(name = "username")
-//	private Evaluation evaluation;
+	@JsonIgnore
+	@OneToOne(mappedBy = "student", fetch = FetchType.EAGER,
+			cascade = CascadeType.REMOVE)
+	private Evaluation evaluation;
 
     @NotNull
     @Column(name = "role")
@@ -82,15 +84,6 @@ public class User{
 		this.password = password;
 	}
 	
-//	public boolean getIsAdmin()
-//	{
-//		return this.isAdmin;
-//	}
-//	
-//	public void setIsAdmin(boolean isAdmin)
-//	{
-//		this.isAdmin = isAdmin;
-//	}
 	public Role getRole() {
 		return role;
 	}
@@ -99,4 +92,12 @@ public class User{
 		this.role = role;
 	}
 
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
+	}
+	
 }
